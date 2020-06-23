@@ -1,0 +1,7 @@
+webhook = "https://canary.discordapp.com/api/webhooks/725009008511156355/_gPwPu2wl7D-SFyv2ARdM30mOKJ_VCKrF7TUfDQDqpU05kBTi9ed2gPan1seaZwPl8B2"
+endpoint = "https://hub.spigotmc.org/stash/rest/api/latest/projects/%s/repos/%s/commits?limit=500"
+
+[repositories]
+SPIGOT = ["bukkit", "craftbukkit", "spigot"]
+
+# vim: set ff=unix autoindent ts=4 sw=4 tw=0 noet :
