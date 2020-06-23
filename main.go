@@ -26,7 +26,7 @@ func main() {
 	readConfigOrPanic()
 	readLastCommits()
 
-	upstreamTimer := time.NewTimer(time.Duration(secondTimer) * time.Second)
+	upstreamTimer := time.NewTicker(time.Duration(secondTimer) * time.Second)
 
 	channel := make(chan bool)
 	for {
