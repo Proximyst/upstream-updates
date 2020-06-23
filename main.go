@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"flag"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -13,13 +14,19 @@ import (
 
 var (
 	lastCommits = make(map[string]string, 5)
+	secondTimer int
 )
+
+func init() {
+	flag.IntVar(&secondTimer, "interval", 60, "the amount of seconds between checks")
+	flag.Parse()
+}
 
 func main() {
 	readConfigOrPanic()
 	readLastCommits()
 
-	upstreamTimer := time.NewTimer(60 * time.Minute)
+	upstreamTimer := time.NewTimer(time.Duration(secondTimer) * time.Second)
 
 	channel := make(chan bool)
 	for {
