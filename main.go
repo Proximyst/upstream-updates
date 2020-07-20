@@ -127,12 +127,14 @@ func update(proj, repo string, channel chan bool) {
 		log.Println("could not marshal body:", err)
 		return
 	}
-	resp, err := http.Post(botConfig.Webhook, "application/json", bytes.NewReader(send))
-	if err != nil {
-		log.Println("could not post to discord:", err)
-		return
+	for _, hook := range botConfig.Webhooks {
+		resp, err := http.Post(hook, "application/json", bytes.NewReader(send))
+		if err != nil {
+			log.Println("could not post to discord:", err)
+			continue
+		}
+		defer resp.Body.Close()
 	}
-	defer resp.Body.Close()
 }
 
 // vim: set ff=unix autoindent ts=4 sw=4 tw=0 noet :

@@ -11,7 +11,7 @@ import (
 var botConfig botConfiguration
 
 type botConfiguration struct {
-	Webhook      string              `toml:"webhook"`
+	Webhooks     []string            `toml:"webhooks"`
 	Endpoint     string              `toml:"endpoint"`
 	Repositories map[string][]string `toml:"repositories"`
 }
